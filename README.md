@@ -1,4 +1,4 @@
-# meraki-hunt
+# meraki-hunting
 
 A collection of standalone scripts used to automate data extraction from [Meraki](https://developer.cisco.com/meraki/) networks.
 

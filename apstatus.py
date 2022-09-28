@@ -2,7 +2,7 @@
 # Author      : Jerzy 'Yuri' Kramarz (op7ic)             #
 # Version     : 1.0                                      #
 # Type        : Python                                   #
-# Description : meraki-hunt.  See README.md for details  #
+# Description : See README.md for details                #
 # License     : See LICENSE for details                  #
 ########################################################## 
 
