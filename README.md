@@ -1,6 +1,6 @@
 # meraki-hunting
 
-A collection of standalone scripts used to automate data extraction from [Meraki](https://developer.cisco.com/meraki/) networks.
+A collection of standalone scripts used to automate data extraction and threat hunting against [Meraki](https://developer.cisco.com/meraki/) networks.
 
 # Usage
 
