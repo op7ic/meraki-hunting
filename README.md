@@ -27,6 +27,7 @@ Execute specific script:
 - ```topologyoverview.py``` - enumerates networks in a selected organization and extracts simple topology overview.
 - ```loginoverview.py``` - enumerates networks in a selected organization and extracts an overview of login attempts to splash screen across last 90 days.
 - ```getMXfirewallrules.py``` - enumerates networks in a selected organization and extracts an overview of applied [SD-WAN](https://meraki.cisco.com/products/security-sd-wan/) firewall rules for cellular, inbound, l3, l7 and port forwarding rules.
+- ```getintrusions.py``` - enumerates networks in a selected organization and extracts intrusion events.
 
 # Acknowledgments
 
