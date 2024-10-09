@@ -62,13 +62,15 @@ with open('ids-intrusion-log.csv', 'w', newline='', encoding='utf-8') as f:
     for x in networkIDs:
         network_meta = dashboard.networks.getNetwork(x)
         print("[+] Grabbing IDS intrusion log for %s" % (network_meta['name']))
-
-        intrusion_events = dashboard.appliance.getNetworkApplianceSecurityEvents(networkId=x,timespan=31536000,total_pages=9999, perPage=1000)
-        for event in intrusion_events:
-            if event['eventType'] == 'IDS Alert':
-                writer.writerow([event['ts'],x,network_meta['name'],network_meta['timeZone'],event['eventType'], 
-                    event['deviceMac'],event['clientMac'],event['srcIp'],event['destIp'],event['protocol'],event['signature'],event['ruleId'],event['blocked'],event['message']
-                    ])
+        try:
+            intrusion_events = dashboard.appliance.getNetworkApplianceSecurityEvents(networkId=x,timespan=31536000,total_pages=9999, perPage=1000)
+            for event in intrusion_events:
+                if event['eventType'] == 'IDS Alert':
+                    writer.writerow([event['ts'],x,network_meta['name'],network_meta['timeZone'],event['eventType'], 
+                        event['deviceMac'],event['clientMac'],event['srcIp'],event['destIp'],event['protocol'],event['signature'],event['ruleId'],event['blocked'],event['message']
+                        ])
+        except:
+            pass
 
 print("[+] Dumping File Intrusion Log")
 
@@ -80,11 +82,14 @@ with open('file-intrusion-log.csv', 'w', newline='', encoding='utf-8') as f:
     for x in networkIDs:
         network_meta = dashboard.networks.getNetwork(x)
         print("[+] Grabbing file intrusion log for %s" % (network_meta['name']))
-        intrusion_events = dashboard.appliance.getNetworkApplianceSecurityEvents(networkId=x,timespan=31536000,total_pages=9999, perPage=1000)
-        for event in intrusion_events:
-            if event['eventType'] == 'File Scanned':
-                writer.writerow([event['ts'],x,network_meta['name'],network_meta['timeZone'],event['eventType'],event['clientName'],event['clientMac'],
-                    event['clientIp'],event['srcIp'],event['destIp'],event['uri'],event['canonicalName'],event['destinationPort'],event['fileHash'],event['fileType'],event['disposition'],event['action']
-                    ])
+        try:
+            intrusion_events = dashboard.appliance.getNetworkApplianceSecurityEvents(networkId=x,timespan=31536000,total_pages=9999, perPage=1000)
+            for event in intrusion_events:
+                if event['eventType'] == 'File Scanned':
+                    writer.writerow([event['ts'],x,network_meta['name'],network_meta['timeZone'],event['eventType'],event['clientName'],event['clientMac'],
+                        event['clientIp'],event['srcIp'],event['destIp'],event['uri'],event['canonicalName'],event['destinationPort'],event['fileHash'],event['fileType'],event['disposition'],event['action']
+                        ])
+        except:
+            pass
 
 print("[+] Done. Happy hunting !")
