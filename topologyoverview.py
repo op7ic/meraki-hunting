@@ -65,8 +65,12 @@ with open('topology-overview-%s.csv' % (timestampStr), 'w', newline='', encoding
     for x in networkIDs:
         network_meta = dashboard.networks.getNetwork(x)
         print("[+] Grabbing topology for %s" % (network_meta['name']))
-        topology = dashboard.networks.getNetworkTopologyLinkLayer(x)
-        for dev in topology['nodes']:
-            writer.writerow([ x,network_meta['name'],network_meta['timeZone'],dev['derivedId'],dev['mac'],dev['type'] ])
+        try:
+            topology = dashboard.networks.getNetworkTopologyLinkLayer(x)
+            for dev in topology['nodes']:
+                writer.writerow([ x,network_meta['name'],network_meta['timeZone'],dev['derivedId'],dev['mac'],dev['type'] ])
+        except:
+        	print('[-] Network %s cannot be added to topology' % (x))
+        	pass
 
 print("[+] Done. Happy hunting !")
